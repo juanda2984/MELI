@@ -50,8 +50,12 @@ public class ServiceGalaxyWarsServiceImpl implements ServiceGalaxyWarsService {
 			positions = this.getLocation(satelliteDto.getDistance(), 0, 0);
 		} else if (satelliteName.equals("Skywalker")) {
 			positions = this.getLocation(0, satelliteDto.getDistance(), 0);
-		} else {
+		} else if (satelliteName.equals("Sato")) {
 			positions = this.getLocation(0, 0, satelliteDto.getDistance());
+		}
+		else {
+			responseDto.setRESPONSE_CODE("404");
+			return responseDto;
 		}
 
 		responseDto.setPosition(new PositionDto(positions[0], positions[1]));
