@@ -3,6 +3,7 @@ package com.meli.galaxywars.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +28,12 @@ public class ServiceGalaxyWarsController {
 	}
 	
 	@PostMapping(value = "/topsecret_split/{satelliteName}")
+	public ResponseDto postTopsecretSplit(@RequestBody @Valid SatelliteDto satelliteDto, @PathVariable String satelliteName) {
+		ResponseDto responseDto=serviceGalaxyWarsService.topsecretSplit(satelliteDto,satelliteName);
+		return responseDto;		
+	}
+	
+	@GetMapping(value = "/topsecret_split/{satelliteName}")
 	public ResponseDto getTopsecretSplit(@RequestBody @Valid SatelliteDto satelliteDto, @PathVariable String satelliteName) {
 		ResponseDto responseDto=serviceGalaxyWarsService.topsecretSplit(satelliteDto,satelliteName);
 		return responseDto;		
